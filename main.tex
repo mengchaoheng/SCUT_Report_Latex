@@ -1,0 +1,293 @@
+\documentclass[twoside,12pt]{article}
+%% 加载几个常用的sty packages
+\RequirePackage{ifpdf}
+\RequirePackage{ifthen}
+\RequirePackage{doc}
+\RequirePackage{keyval}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{indentfirst}
+\RequirePackage{makeidx} % 索引
+\RequirePackage{amssymb} %this package conflicts with xeCJK, place it before xeCJK to avoid the coflict.
+\RequirePackage[final]{pdfpages}
+\RequirePackage{color}
+%\RequirePackage{prettyref} %不需要
+
+%%%%
+% 页面设置
+%% 设置页面布局
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[a4paper,left=3cm,right=2cm,bottom=2.5cm,top=2.5cm,%设置页面上下各为25mm
+headheight=1.5cm,%页眉所占高度
+footskip=1.5cm %页脚所占高度
+]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%三种方法使用字体设置%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 一
+%%%%%%%%%%%%%%%%%
+% \usepackage{ctex}
+% \setmainfont[Mapping=tex-text]{Didot}%\rmfamily 使用的字体,默认英文和数字的字体。
+% \setCJKmainfont{SimHei}
+% \setmainfont[Mapping=tex-text]{Times New Roman}%\rmfamily 使用的字体,默认英文和数字的字体。
+% \setCJKmainfont{SimSun}
+
+% 二
+%%%%%%%%%%%%%\documentclass{article}
+% \usepackage{fontspec}
+% \usepackage[AutoFakeBold=true, AutoFakeSlant=true]{xeCJK}
+% \setmainfont{Times New Roman} %设置默认字体，如需中文需使用支持中文的字体
+% \setCJKmainfont{SimSun}%设置 CJK 默认字体
+%%%%%%%%%%%%%%%5
+
+% 三
+%%%%%%%%%%%%%%参考毕业论文\documentclass{article}
+\RequirePackage[BoldFont, SlantFont]{xeCJK} %CJKnumber已弃用
+%\@ifpackagelater {xeCJK}  { 2008/12/29 }
+\RequirePackage{CJKnumb} % used in recent TEX distribution
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-by MCH
+\RequirePackage{xCJKnumb} %中文编号如第一章的“一”，利用xCJKnumb设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\punctstyle{kaiming}
+\setmainfont[Mapping=tex-text]{Times New Roman}%\rmfamily 使用的字体,默认英文和数字的字体。
+\XeTeXlinebreaklocale "zh" %采用中文断行方式
+\XeTeXlinebreakskip = 0pt plus 1pt %字元间可加入0pt~1pt 的弹性间距，这样才能排出左右对齐的段落。
+
+\setCJKmainfont{SimSun}
+\setCJKsansfont{SimSun}	%设置默认字体，防止报警
+\setCJKmonofont{SimSun} %设置默认字体，防止报警
+\setCJKfamilyfont{song}{SimSun}
+
+\newcommand{\songti}{\CJKfamily{song}}
+
+\newcommand{\xiaosihao}{\fontsize{12pt}{14pt}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{20}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{16pt}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{13pt}\selectfont}
+\newcommand{\ftcaptionfont}{\songti\wuhao\normalfont}         % 图表标题的字体
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%不要拉大行距使得页面充满
+\raggedbottom
+
+%参考文献设置
+\usepackage[backend=biber,style=gb7714-2015,gbalign=gb7714-2015,gbpub=false,gbnamefmt = lowercase]{biblatex}
+\addbibresource[location=local]{mybibfile.bib} % 如果在其他盘，改为相对路径。比如F盘，改为：F/MyLibrary.bib
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{chngpage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 表格
+\usepackage{diagbox}
+% 超链接
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%毕业论文版
+%% 图表环境
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%图题(由图号和图名组成)。图号为“图1-1”格式。图题置于图下，有图注或其他说明时应置于图题之上。
+%表序与表名置于表上。
+%图题和表题在lyx中插图或插表时，可以参照标题的位置，在上还是在下。
+
+\RequirePackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.eps,.jpg,.png} % 如果插入的图片没有指定扩展名,那么依次搜索下面的扩展名所对应的文件
+% \RequirePackage{subfig} % config兼容subfigure命令
+\usepackage[caption=false,farskip=0pt,labelfont={bf}]{subfig}
+\RequirePackage{float} % 可以使用［H］命令
+\RequirePackage{caption} % 定义图的标题格式：居中. 使用caption3.0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 根据子图引用显示，重定义部分参数 ——by mch
+\DeclareSubrefFormat{parens}{#1 #2)}
+\DeclareSubrefFormat{subparens}{#2)}
+\DeclareCaptionListOfFormat{parens}{#1 #2)}
+\DeclareCaptionListOfFormat{subparens}{#2)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareCaptionFont{capFont}{\ftcaptionfont} % 表格名及图名
+\DeclareCaptionLabelSeparator{twospace}{~~}
+\captionsetup{ labelsep=space,% 去掉图标签后的冒号 % 原模板labelsep=twospace，而论文撰写规范要求是space
+  belowskip=0bp,aboveskip=0bp,
+  font={capFont}, figurename=图,tablename=表,listfigurename=插图目录,listtablename=表格目录}
+\captionsetup[figure]{position=bottom}
+\captionsetup[subfloat]{captionskip=6bp,nearskip=0bp,farskip=0bp,topadjust=0bp,
+  justification=centering,labelformat=brace,labelsep=space,subrefformat=subparens,listofformat=parens}%要使分图题和图题一样字号，选项加上 font={capFont}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%毕业论文版
+
+% 公式和正文的间距由4pt改为10pt，更美观
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\abovedisplayskip=0pt
+\belowdisplayskip=0pt
+
+% 浮动
+\usepackage{float} % [H]
+% 列表
+\usepackage{enumerate}
+% pandoc markdown转latex
+\newcommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{longtable}
+\usepackage{booktabs}% \toprule, \midrule, \bottomrule
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 数学
+\RequirePackage{bm} % 数学符号粗体
+\usepackage{mathrsfs} % \mathscr
+\usepackage{amssymb,amsfonts,amsmath,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+%\mdfdefinestyle{shadeStyle}{backgroundcolor=gray!10,linewidth=0pt,innerleftmargin=1ex,innertopmargin=-0.5ex}
+\newtheoremstyle{definition}% name
+{0pt}%      Space above, empty = `usual value'
+{0pt}%      Space below
+{}% Body font \itshape
+{\parindent}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{:}%        Punctuation after thm head
+{0.5em}% Space after thm head: \newline = linebreak
+{}%         Thm head spec
+\theoremstyle{definition}
+\newtheorem{definition}{定义~}[section]
+\newtheorem{example}{例~}[section]
+\newtheorem{remark}{说明~}[section]
+\newtheorem{assumption}{假设~}[section]	% by mch
+% ------改为definition，by mch
+\newtheorem{proposition}{命题~}[section]
+\newtheorem{lemma}{引理~}[section]
+\newtheorem{theorem}{定理~}[section]
+\newtheorem{axiom}{公理~}[section]
+\newtheorem{corollary}{ 推论~}[section]
+\newtheorem{case}{情形~}[section]
+\newtheorem{conjecture}{猜想~}[section]
+\newtheorem{property}{性质~}[section]
+
+%% 可继续用\newtheorem命令添加需要的环境
+
+\newtheoremstyle{plain}% name
+{0pt}%      Space above, empty = `usual value'
+{0pt}%      Space below
+{\itshape}% Body font \itshape
+{\parindent}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{:}%        Punctuation after thm head
+{0.5em}% Space after thm head: \newline = linebreak
+{}%         Thm head spec
+\theoremstyle{plain}
+
+\renewenvironment{proof}{\vskip 1pt\indent  证明:~\normalfont}{\hfill$\square$\vskip 0.01\baselineskip} %$\blacksquare$ -----去掉\itshape 该命令用于设置斜体
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 算法/伪代码
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+%% 程序代码格式
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\RequirePackage[ruled,vlined,algochapter]{algorithm2e}
+\RequirePackage{listings}
+\definecolor{mygray}{RGB}{245,245,245}
+\lstset{
+  tabsize=4, %
+  frame=tb,
+  commentstyle=\color{red!50!green!50!blue!50},
+  rulesepcolor=\color{red!20!green!20!blue!20},%代码块边框为淡青色
+  keywordstyle=\color{blue!90}\bfseries,
+  backgroundcolor=\color{mygray},
+  showstringspaces=false,%不显示代码字符串中间的空格标记
+  stringstyle=\ttfamily,
+  basicstyle={\footnotesize\ttfamily},
+  breaklines=true,
+  keepspaces=true, %
+  flexiblecolumns=true, %
+  lineskip=-0.1pt,%行距
+  fontadjust,
+  captionpos=t,
+  framextopmargin=1pt,framexbottommargin=1pt,abovecaptionskip=-1pt,belowcaptionskip=1pt,
+  %xleftmargin=4em,xrightmargin=4em, % 设定listing左右的空白
+ extendedchars=false,columns=flexible,mathescape=false
+  breakautoindent=true
+}
+\renewcommand{\lstlistingname}{代码} %% 重命名Listings标题头 added by Guan
+
+
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TikZ
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+%\usepackage{gensymb}
+\usepackage{tabularx}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[bf, small]{titlesec}
+\titleformat{\section}{\bf\normalsize}{\thesection.\,}{0.24em}{}
+
+\titleformat{\subsection}{\bf\normalsize}{\thesubsection.\,}{0.24em}{}
+\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection.\,}{0.24em}{}
+
+\titlespacing{\section}{0cm}{*1}{*1}
+
+\titlespacing{\subsection}{0cm}{*1}{*1}
+\titlespacing{\subsubsection}{0cm}{*1}{*1}
+
+
+\title{\vspace{-1.5cm} \bf\xiaoerhao 基于INDI的涵道无人机角速度控制}
+\author{\bf\sihao 蒙超恒}
+\date{}
+\setlength{\parindent}{0pt} % 首行不缩进
+\linespread{2.17}
+%\linespread{2}
+
+%%%%%%%%%%%奇偶页页眉不同
+\usepackage{fancyhdr}
+
+\usepackage{xunicode}
+\renewcommand{\lstlistingname}{列表}
+\pagestyle{fancy}
+\fancyfoot[C]{\wuhao \thepage}
+\fancyhead[RE]{}
+\fancyhead[RO]{}
+\fancyhead[LE]{}
+\fancyhead[LO]{}
+\fancyhead[CO]{\wuhao{华南理工大学博士课程论文}}
+\fancyhead[CE]{\wuhao{基于INDI的涵道无人机角速度控制}}% 
+\renewcommand{\headrulewidth}{1.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{indentfirst}
+\usepackage{pdfpages}
+\begin{document}
+  \includepdf[pages={1-2}]{cover.pdf}
+	\captionsetup{labelformat=default,labelsep=space} 
+	\maketitle
+  \setcounter{page}{1}
+	\thispagestyle{fancy} % <---
+%	\addtolength{\parskip}{0pt}
+	%\tiny
+	%\scriptsize
+	%\footnotesize
+	%\small
+	% \normalsize 12pt
+	% \large
+	%\Large
+	%\LARGE
+	% \huge
+	%\Huge
+	% 正文
+	\input{body}
+
+	\renewcommand*{\bibfont}{\wuhao}
+	\printbibliography[title={参考文献}]	% 参考文献著录
+\end{document}
