@@ -4,7 +4,7 @@
 
 ## 快速使用：
 
-参考学位论文模版以及ctex文档。硕士课程论文去掉英文摘要即可。封面使用doc文件另存为cover.pdf后，在main.tex调用，编译main.tex即可生成论文pdf文件：main.pdf
+参考学位论文模版以及ctex文档。硕士课程论文去掉英文题目/摘要页即最后一页即可。封面使用doc文件另存为cover.pdf后，在main.tex调用，编译main.tex即可生成论文pdf文件：main.pdf
 
 编译之前首先安装[texlive](https://www.tug.org/texlive/)，找到对应系统（Linux，win，macOS）的版本。注意macOS是MacTeX。
 
