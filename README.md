@@ -6,7 +6,7 @@
 
 编写自己的body.tex文件，编译main.tex即可.
 
-详情可参考学位论文模版以及ctex文档。硕士课程论文去掉英文题目/摘要页即最后一页，博士课程论文记得修改该页的页码。封面（以及博士课程论文的最后一页）使用doc文件另存为cover.pdf后，在main.tex调用，编译main.tex即可生成论文pdf文件：main.pdf
+详情可参考学位论文模版以及ctex文档。默认为中文博士课程论文，英文博士课程论文切换到EN分支。硕士课程论文去掉英文题目/摘要页即最后一页，博士课程论文记得修改该页的页码。封面（以及博士课程论文的最后一页）使用doc文件另存为cover.pdf后，在main.tex调用，编译main.tex即可生成论文pdf文件：main.pdf
 
 编译之前首先安装[texlive](https://www.tug.org/texlive/)，找到对应系统（Linux，win，macOS）的版本。注意macOS是MacTeX。
 
