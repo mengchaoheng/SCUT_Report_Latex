@@ -1,12 +1,15 @@
-# 华南理工大学硕/博士课程论文LaTeX模板
+# 华南理工大学研究生学位（毕业）论文开题报告LaTeX模板
 
-本项目始于2023年，可用于撰写华南理工大学硕/博士课程论文。模版参考了[maoruimas](https://www.cnblogs.com/maoruimas/p/12774996.html)。
+模版参考了华南理工大学硕/博士课程论文，只是加了个框。然后前几页和后几页的表格直接从word生成的PDF获取，`\includepdf`属于懒人神器了。
 
 ## 快速使用：
 
-编写自己的body.tex文件，编译main.tex即可.
+1.先填好cover.docx，然后生成PDF，然后
 
-详情可参考学位论文模版以及ctex文档。默认为中文博士课程论文，英文博士课程论文切换到EN分支。硕士课程论文去掉英文题目/摘要页即最后一页，博士课程论文记得修改该页的页码。封面（以及博士课程论文的最后一页）使用doc文件另存为cover.pdf后，在main.tex调用，编译main.tex即可生成论文pdf文件：main.pdf
+2.编写自己的body.tex文件，编译main.tex即可。
+
+3.记得修改cover.docx后几页的页码，取决于main.tex写了几页，重新生成PDF，再编译一次，这样页码就接上了。
+
 
 编译之前首先安装[texlive](https://www.tug.org/texlive/)，找到对应系统（Linux，win，macOS）的版本。注意macOS是MacTeX。
 

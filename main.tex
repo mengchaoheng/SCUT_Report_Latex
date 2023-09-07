@@ -1,4 +1,4 @@
-\documentclass[twoside,12pt]{article}
+\documentclass[twoside,10.5pt]{article}
 %% 加载几个常用的sty packages
 \RequirePackage{ifpdf}
 \RequirePackage{ifthen}
@@ -10,15 +10,16 @@
 \RequirePackage{amssymb} %this package conflicts with xeCJK, place it before xeCJK to avoid the coflict.
 \RequirePackage[final]{pdfpages}
 \RequirePackage{color}
+
 %\RequirePackage{prettyref} %不需要
 
 %%%%
 % 页面设置
 %% 设置页面布局
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[a4paper,left=3cm,right=2cm,bottom=2.5cm,top=2.5cm,%设置页面上下各为25mm
+\RequirePackage[a4paper,left=2.5cm,right=2.5cm,bottom=2.5cm,top=2.5cm,%设置页面上下各为25mm
 headheight=1.5cm,%页眉所占高度
-footskip=1.5cm %页脚所占高度
+footskip=1cm %页脚所占高度
 ]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,13 +59,14 @@ footskip=1.5cm %页脚所占高度
 \setCJKsansfont{SimSun}	%设置默认字体，防止报警
 \setCJKmonofont{SimSun} %设置默认字体，防止报警
 \setCJKfamilyfont{song}{SimSun}
-
+\setCJKfamilyfont{fang}{FangSong_GB2312}
 \newcommand{\songti}{\CJKfamily{song}}
-
+\newcommand{\fangsong}{\CJKfamily{fang}}
 \newcommand{\xiaosihao}{\fontsize{12pt}{14pt}\selectfont}
 \newcommand{\xiaoerhao}{\fontsize{18pt}{20}\selectfont}
 \newcommand{\sihao}{\fontsize{14pt}{16pt}\selectfont}
 \newcommand{\wuhao}{\fontsize{10.5pt}{13pt}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{11pt}\selectfont}
 \newcommand{\ftcaptionfont}{\songti\wuhao\normalfont}         % 图表标题的字体
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -243,11 +245,11 @@ footskip=1.5cm %页脚所占高度
 \titlespacing{\subsubsection}{0cm}{*1}{*1}
 
 
-\title{\vspace{-1.5cm} \bf\xiaoerhao 基于INDI的涵道无人机角速度控制}
+\title{\vspace{-1.5cm} \bf\xiaoerhao 基于方位刚度理论的无人机编队控制}
 \author{\bf\sihao 蒙超恒}
 \date{}
 \setlength{\parindent}{0pt} % 首行不缩进
-\linespread{2.17}
+\linespread{1.8}
 %\linespread{2}
 
 %%%%%%%%%%%奇偶页页眉不同
@@ -256,23 +258,30 @@ footskip=1.5cm %页脚所占高度
 \usepackage{xunicode}
 \renewcommand{\lstlistingname}{列表}
 \pagestyle{fancy}
-\fancyfoot[C]{\wuhao \thepage}
+\fancyfoot[C]{\xiaowuhao - {\thepage} -}
 \fancyhead[RE]{}
 \fancyhead[RO]{}
 \fancyhead[LE]{}
 \fancyhead[LO]{}
-\fancyhead[CO]{\wuhao{华南理工大学博士课程论文}}
-\fancyhead[CE]{\wuhao{基于INDI的涵道无人机角速度控制}}% 
-\renewcommand{\headrulewidth}{1.5pt}
+\fancyhead[CO]{\xiaowuhao{}}
+\fancyhead[CE]{\xiaowuhao{}}% 
+\renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
 \usepackage{indentfirst}
 \usepackage{pdfpages}
+\usepackage[many]{tcolorbox}
+\newtcolorbox{ubox}
+{
+	breakable,height fixed for=all,height fill,colback=white,arc=0mm,outer arc=0pt,width=1.01\linewidth,boxrule=.7pt, before upper={\parindent24bp},left=1.2pt,right=1.2pt,top=0mm
+}
+
+
 \begin{document}
   \includepdf[pages={1-2}]{cover.pdf}
 	\captionsetup{labelformat=default,labelsep=space} 
-	\maketitle
-  \setcounter{page}{1}
+%	\maketitle
+  \setcounter{page}{2}
 	\thispagestyle{fancy} % <---
 %	\addtolength{\parskip}{0pt}
 	%\tiny
@@ -286,9 +295,10 @@ footskip=1.5cm %页脚所占高度
 	% \huge
 	%\Huge
 	% 正文
+	 \newpage
 	\input{body}
 
 	\renewcommand*{\bibfont}{\wuhao}
 	\printbibliography[title={参考文献}]	% 参考文献著录
-  \includepdf[pages={5}]{cover.pdf} %硕士/英文论文注释掉这一行
+  \includepdf[pages={6-8}]{cover.pdf} %记得改页码
 \end{document}
