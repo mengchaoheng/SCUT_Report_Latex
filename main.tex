@@ -273,7 +273,19 @@ footskip=1cm %页脚所占高度
 \usepackage[many]{tcolorbox}
 \newtcolorbox{ubox}
 {
-	breakable,height fixed for=all,height fill,colback=white,arc=0mm,outer arc=0pt,width=1.01\linewidth,boxrule=.7pt, before upper={\parindent24bp},left=1.2pt,right=1.2pt,top=0mm
+  breakable,
+  height fixed for=all,
+  height fill,
+  colback=white,
+  arc=0mm,
+  outer arc=0pt,
+  width=1.01\linewidth,
+  boxrule=.5pt,  % 边框粗细调至跟通知附件一致
+  colframe=black,  % 边框颜色设置为黑色
+  before upper={\parindent24bp},
+  left=1.2pt,
+  right=1.2pt,
+  top=0mm
 }
 
 
