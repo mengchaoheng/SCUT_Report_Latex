@@ -116,10 +116,10 @@ footskip=1cm %页脚所占高度
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%毕业论文版
 
 % 公式和正文的间距由4pt改为10pt，更美观
-\abovedisplayshortskip=0pt
-\belowdisplayshortskip=0pt
-\abovedisplayskip=0pt
-\belowdisplayskip=0pt
+% \abovedisplayshortskip=4pt
+% \belowdisplayshortskip=4pt
+% \abovedisplayskip=0pt
+% \belowdisplayskip=0pt
 
 % 浮动
 \usepackage{float} % [H]
@@ -288,29 +288,29 @@ footskip=1cm %页脚所占高度
   top=0mm
 }
 
+% 自定义配置
+\usepackage{setspace} % 可用于调整参考文献行间距
 
 \begin{document}
   \includepdf[pages={1-2}]{cover.pdf}
-	\captionsetup{labelformat=default,labelsep=space} 
-%	\maketitle
+  \captionsetup{labelformat=default,labelsep=space}
+  %	\maketitle
   \setcounter{page}{2}
-	\thispagestyle{fancy} % <---
-%	\addtolength{\parskip}{0pt}
-	%\tiny
-	%\scriptsize
-	%\footnotesize
-	%\small
-	% \normalsize 12pt
-	% \large
-	%\Large
-	%\LARGE
-	% \huge
-	%\Huge
-	% 正文
-	 \newpage
-	\input{body}
+  \thispagestyle{fancy} % <---
+  % \addtolength{\parskip}{0pt}
+  % \tiny
+  % \scriptsize
+  % \footnotesize
+  % \small
+  % \normalsize 12pt
+  % \large
+  % \Large
+  % \LARGE
+  % \huge
+  % \Huge
+  % 正文
+  % \newpage
+  \input{body}
 
-	\renewcommand*{\bibfont}{\wuhao}
-	\printbibliography[title={参考文献}]	% 参考文献著录
   \includepdf[pages={6-8}]{cover.pdf} %记得改页码
 \end{document}
