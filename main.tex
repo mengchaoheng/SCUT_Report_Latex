@@ -1,4 +1,4 @@
-\documentclass[twoside,10.5pt]{article}
+\documentclass[twoside,11pt]{article}
 %% 加载几个常用的sty packages
 \RequirePackage{ifpdf}
 \RequirePackage{ifthen}
@@ -75,7 +75,8 @@ footskip=1cm %页脚所占高度
 
 %参考文献设置
 \usepackage[backend=biber,style=gb7714-2015,gbalign=gb7714-2015,gbpub=false,gbnamefmt = lowercase]{biblatex}
-\addbibresource[location=local]{mybibfile.bib} % 如果在其他盘，改为相对路径。比如F盘，改为：F/MyLibrary.bib
+% \addbibresource[location=local]{mybibfile.bib} % 如果在其他盘，改为相对路径。比如F盘，改为：F/MyLibrary.bib
+\addbibresource[location=local]{mybibfile1.bib} % 如果在其他盘，改为相对路径。比如F盘，改为：F/MyLibrary.bib
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{chngpage}
@@ -116,8 +117,8 @@ footskip=1cm %页脚所占高度
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%毕业论文版
 
 % 公式和正文的间距由4pt改为10pt，更美观
-% \abovedisplayshortskip=4pt
-% \belowdisplayshortskip=4pt
+% \abovedisplayshortskip=0pt
+% \belowdisplayshortskip=0pt
 % \abovedisplayskip=0pt
 % \belowdisplayskip=0pt
 
@@ -151,7 +152,7 @@ footskip=1cm %页脚所占高度
 \theoremstyle{definition}
 \newtheorem{definition}{定义~}[section]
 \newtheorem{example}{例~}[section]
-\newtheorem{remark}{说明~}[section]
+\newtheorem{remark}{注~}[section]
 \newtheorem{assumption}{假设~}[section]	% by mch
 % ------改为definition，by mch
 \newtheorem{proposition}{命题~}[section]
@@ -287,7 +288,6 @@ footskip=1cm %页脚所占高度
   right=1.2pt,
   top=0mm
 }
-
 % 自定义配置
 \usepackage{setspace} % 可用于调整参考文献行间距
 
@@ -311,6 +311,7 @@ footskip=1cm %页脚所占高度
   % 正文
   % \newpage
   \input{body}
+  
 
-  \includepdf[pages={6-8}]{cover.pdf} %记得改页码
+  \includepdf[pages={1-2}]{cover1.pdf} %记得改页码
 \end{document}
