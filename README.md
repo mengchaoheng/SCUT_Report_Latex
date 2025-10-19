@@ -17,7 +17,7 @@
 
 编译有两种方法：
 
-1. 使用VSCode。设置参考`settings.json`，使用方法详情参考学位论文[讨论区](https://github.com/woshisangea/SCUT_thesis/discussions)。点击XeLaTeX选项编译。
+1. 使用VSCode。设置参考`settings.json`，使用方法详情参考学位论文[讨论区](https://github.com/mengchaoheng/SCUT_thesis/discussions)。点击XeLaTeX选项编译。
 
 2. 使用TeXstudio，首次编译建议从主文件`main.tex`开始编译，首先在`TeXstudio的Options->Configure TeXstudio->build`中，编译器(Dufault Compiler)选择`XeLaTeX`，默认文献工具(Default Bibliography Tool)选`Biber`。
 
